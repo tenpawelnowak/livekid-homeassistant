@@ -1,0 +1,54 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "LiveKid",
+        "description": "Wklej token Bearer z app.livekid.com (DevTools → Network → dowolne zapytanie do pl.api.api-livekid-prod.com → Request Headers → authorization). Możesz wkleić cały blok nagłówków – token zostanie wyciągnięty automatycznie.",
+        "data": { "token": "Token" }
+      },
+      "reauth_confirm": {
+        "title": "Token LiveKid odrzucony",
+        "description": "LiveKid nie akceptuje już zapisanego tokenu. Wklej nowy.",
+        "data": { "token": "Token" }
+      }
+    },
+    "error": {
+      "no_token": "Nie znaleziono tokenu JWT we wklejonym tekście.",
+      "no_kid": "To nie jest token rodzica (brak przypisanego dziecka).",
+      "invalid_auth": "LiveKid odrzucił token.",
+      "cannot_connect": "Brak połączenia z LiveKid.",
+      "unknown": "Nieoczekiwany błąd, sprawdź logi."
+    },
+    "abort": {
+      "already_configured": "To dziecko jest już skonfigurowane.",
+      "reauth_successful": "Token zaktualizowany.",
+      "wrong_account": "Token należy do innego konta lub dziecka."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "presence_today": {
+        "name": "Obecność dziś",
+        "state": {
+          "present": "Obecny",
+          "absent": "Nieobecny",
+          "planned_absence": "Planowana nieobecność",
+          "day_off": "Dzień wolny",
+          "not_yet": "Jeszcze nie"
+        }
+      },
+      "drop_off": { "name": "Przyprowadzenie" },
+      "pick_up": { "name": "Odbiór" },
+      "planned_in": { "name": "Planowane przyjście" },
+      "planned_out": { "name": "Planowane wyjście" },
+      "hours_this_month": { "name": "Godziny w tym miesiącu" },
+      "days_present_this_month": { "name": "Dni obecności w tym miesiącu" },
+      "balance": { "name": "Saldo" },
+      "bill_to_pay": { "name": "Do zapłaty" },
+      "bill_due_date": { "name": "Termin płatności" }
+    },
+    "calendar": {
+      "schedule": { "name": "Kalendarz" }
+    }
+  }
+}

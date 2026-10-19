@@ -1,0 +1,54 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "LiveKid",
+        "description": "Paste the Bearer token from app.livekid.com (DevTools → Network → any pl.api.api-livekid-prod.com request → Request Headers → authorization). You can paste the whole header block; the token is extracted automatically.",
+        "data": { "token": "Token" }
+      },
+      "reauth_confirm": {
+        "title": "LiveKid token rejected",
+        "description": "LiveKid no longer accepts the saved token. Paste a fresh one.",
+        "data": { "token": "Token" }
+      }
+    },
+    "error": {
+      "no_token": "No JWT found in the pasted text.",
+      "no_kid": "This token is not a parent token (no child attached).",
+      "invalid_auth": "LiveKid rejected the token.",
+      "cannot_connect": "Could not reach LiveKid.",
+      "unknown": "Unexpected error, check the logs."
+    },
+    "abort": {
+      "already_configured": "This child is already configured.",
+      "reauth_successful": "Token updated.",
+      "wrong_account": "The token belongs to a different account or child."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "presence_today": {
+        "name": "Presence today",
+        "state": {
+          "present": "Present",
+          "absent": "Absent",
+          "planned_absence": "Planned absence",
+          "day_off": "Day off",
+          "not_yet": "Not yet"
+        }
+      },
+      "drop_off": { "name": "Drop-off" },
+      "pick_up": { "name": "Pick-up" },
+      "planned_in": { "name": "Planned arrival" },
+      "planned_out": { "name": "Planned departure" },
+      "hours_this_month": { "name": "Hours this month" },
+      "days_present_this_month": { "name": "Days present this month" },
+      "balance": { "name": "Balance" },
+      "bill_to_pay": { "name": "Bill to pay" },
+      "bill_due_date": { "name": "Bill due date" }
+    },
+    "calendar": {
+      "schedule": { "name": "Schedule" }
+    }
+  }
+}

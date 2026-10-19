@@ -1,0 +1,12 @@
+{
+  "domain": "livekid",
+  "name": "LiveKid",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://github.com/tenpawelnowak/livekid-homeassistant",
+  "issue_tracker": "https://github.com/tenpawelnowak/livekid-homeassistant/issues",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "0.1.0"
+}
