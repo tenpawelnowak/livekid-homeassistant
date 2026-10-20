@@ -33,3 +33,8 @@ Each token is tied to one child. For more children, add the integration again wi
 
 ## Dev
 `pip install aiohttp && LIVEKID_TOKEN='…' python scripts/smoke.py`
+
+## License
+MIT. See [LICENSE](LICENSE).
+
+This is an unofficial project and is not affiliated with or endorsed by LiveKid.
