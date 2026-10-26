@@ -51,7 +51,8 @@ class LiveKidConfigFlow(ConfigFlow, domain=DOMAIN):
         except LiveKidError:
             _LOGGER.exception("Unexpected LiveKid error")
             return None, None, None, "unknown"
-        return token, api, balance, None
+        # An expired paste was refreshed during validation; keep the working token.
+        return api.token, api, balance, None
 
     async def async_step_user(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         errors: dict[str, str] = {}

@@ -8,7 +8,7 @@
       },
       "reauth_confirm": {
         "title": "Token LiveKid odrzucony",
-        "description": "LiveKid nie akceptuje już zapisanego tokenu. Wklej nowy.",
+        "description": "LiveKid nie akceptuje już zapisanego tokenu i nie udało się go odświeżyć (np. po zmianie hasła albo gdy LiveKid wymaga ponownego logowania). Zaloguj się na app.livekid.com i wklej nowy token.",
         "data": { "token": "Token" }
       }
     },

@@ -8,7 +8,7 @@
       },
       "reauth_confirm": {
         "title": "LiveKid token rejected",
-        "description": "LiveKid no longer accepts the saved token. Paste a fresh one.",
+        "description": "LiveKid no longer accepts the saved token and could not refresh it (for example after a password change or when LiveKid requires a new login). Log in at app.livekid.com and paste a fresh token.",
         "data": { "token": "Token" }
       }
     },

@@ -14,7 +14,10 @@ PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.CALENDAR]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: LiveKidConfigEntry) -> bool:
-    api = LiveKidApi(async_get_clientsession(hass), entry.data[CONF_TOKEN])
+    def _store_token(token: str) -> None:
+        hass.config_entries.async_update_entry(entry, data={**entry.data, CONF_TOKEN: token})
+
+    api = LiveKidApi(async_get_clientsession(hass), entry.data[CONF_TOKEN], _store_token)
     coordinator = LiveKidCoordinator(hass, entry, api)
     await coordinator.async_config_entry_first_refresh()
     entry.runtime_data = coordinator
