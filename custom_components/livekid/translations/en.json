@@ -50,5 +50,11 @@
     "calendar": {
       "schedule": { "name": "Schedule" }
     }
+  },
+  "services": {
+    "send_latest": {
+      "name": "Send latest messages",
+      "description": "Fires livekid_message and livekid_news events for the newest staff message and the newest news post, with test set to true. Use it to test automations."
+    }
   }
 }

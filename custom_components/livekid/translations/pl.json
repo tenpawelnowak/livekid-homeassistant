@@ -50,5 +50,11 @@
     "calendar": {
       "schedule": { "name": "Kalendarz" }
     }
+  },
+  "services": {
+    "send_latest": {
+      "name": "Wyślij najnowsze wiadomości",
+      "description": "Wywołuje zdarzenia livekid_message i livekid_news dla najnowszej wiadomości od personelu i najnowszego ogłoszenia, z test ustawionym na true. Służy do testowania automatyzacji."
+    }
   }
 }

@@ -16,6 +16,7 @@ from homeassistant.util import dt as dt_util
 
 from .api import LiveKidApi, LiveKidAuthError, LiveKidError
 from .const import DOMAIN, SCAN_INTERVAL
+from .messages import LiveKidMessages
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -44,6 +45,7 @@ class LiveKidCoordinator(DataUpdateCoordinator[LiveKidData]):
             hass, _LOGGER, config_entry=entry, name=DOMAIN, update_interval=SCAN_INTERVAL
         )
         self.api = api
+        self.messages = LiveKidMessages(hass, entry.entry_id, api)
         self._days_off_cache: dict[int, set[str]] = {}
 
     async def async_get_days_off(self, year: int) -> set[str]:
@@ -85,4 +87,17 @@ class LiveKidCoordinator(DataUpdateCoordinator[LiveKidData]):
             _LOGGER.warning("LiveKid billing update failed: %s", err)
             if self.data:
                 data.balance, data.bill = self.data.balance, self.data.bill
+
+        # Messages are optional too: never mark the other entities unavailable because of them.
+        try:
+            await self.messages.async_check(self.kid_name(data))
+        except LiveKidAuthError as err:
+            raise ConfigEntryAuthFailed(str(err)) from err
+        except LiveKidError as err:
+            _LOGGER.warning("LiveKid messages update failed: %s", err)
         return data
+
+    def kid_name(self, data: LiveKidData | None = None) -> str:
+        data = data or self.data
+        balance = (data.balance if data else None) or {}
+        return balance.get("name") or f"#{self.api.kid_id}"

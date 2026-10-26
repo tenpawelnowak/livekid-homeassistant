@@ -152,3 +152,15 @@ class LiveKidApi:
     async def get_latest_bill(self) -> dict[str, Any] | None:
         rows = await self._get("/v1/bills", {"limit": 1})
         return rows[0] if rows else None
+
+    async def get_chats(self) -> list[dict[str, Any]]:
+        """Chat rooms with 'members' (id, type: parent/teacher/school, display) and 'last_message'."""
+        return await self._get("/v1/chats") or []
+
+    async def get_chat_messages(self, chat_id: int) -> list[dict[str, Any]]:
+        """Latest 20 messages of a chat room, newest first; 'date' is in milliseconds."""
+        return await self._get(f"/v1/chats/{chat_id}/messages") or []
+
+    async def get_news(self) -> list[dict[str, Any]]:
+        """News posts (title, body, author.display, photos, created_at in ms); pinned posts come first."""
+        return await self._get("/v1/news") or []
